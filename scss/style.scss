@@ -111,5 +111,17 @@ header {
         color: $primary;
       }
     }
+    .scores {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      label {
+        font-weight: 700;
+      }
+      input {
+        border-radius: 7px;
+        border: 1px $gray solid;
+      }
+    }
   }
 }

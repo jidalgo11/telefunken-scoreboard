@@ -5,7 +5,7 @@ const d = document;
 const playerNameInput = d.getElementById("playerNameInput");
 const addPlayerButton = d.getElementById("addPlayerButton");
 
-function createPlayerElement(player) {
+function createPlayerElement(player, playerId) {
   const playerDiv = d.createElement("div");
   const playerNameDiv = d.createElement("div");
   const buysDiv = d.createElement("div");
@@ -24,10 +24,14 @@ function createPlayerElement(player) {
 
   // Create input fields for each round
   const roundInputs = [];
+  const roundLabels = ["1/3", "2/3", "1/4", "2/4", "1/5", "2/5", "Escalera"];
   for (let i = 1; i <= 7; i++) {
     const roundInput = d.createElement("input");
+    const roundInputLabels = d.createElement("label");
     roundInput.type = "number";
     roundInput.value = player[`round${i}`] || 0; // Initialize with player's score for the round or 0
+    roundInput.dataset.playerId = playerId;
+    roundInput.dataset.roundNumber = i;
     roundInput.addEventListener("change", function () {
       // Update the player's score for the corresponding round
       player[`round${i}`] = parseInt(this.value) || 0;
@@ -37,29 +41,27 @@ function createPlayerElement(player) {
       player.score = totalScore;
       // Update the scoreboard
       updateScoreboard();
+      savePlayerData(players);
     });
+    roundInputLabels.textContent = roundLabels[i - 1];
+    scoreDiv.appendChild(roundInputLabels);
     scoreDiv.appendChild(roundInput);
     playerDiv.appendChild(scoreDiv);
     roundInputs.push(roundInput);
   }
 
-  // Display total score
-  const totalScoreElement = d.createElement("h3");
-  totalScoreElement.textContent = `Score: ${player.score}`;
-  totalScoreElement.classList.add("score");
-  scoreDiv.appendChild(totalScoreElement);
+  console.log(roundInputs);
+
+  const buysElement = d.createElement("h3");
+  buysElement.textContent = `Buys`;
+  buysDiv.appendChild(buysElement);
+  playerDiv.appendChild(buysDiv);
 
   for (let i = 0; i <= 12; i++) {
     const pepasElement = d.createElement("input");
     pepasElement.type = "checkbox";
     buysDiv.appendChild(pepasElement);
   }
-
-  // Display number of buys
-  const buysElement = d.createElement("h3");
-  buysElement.textContent = `Buys left: ${player.buys}`;
-  buysDiv.appendChild(buysElement);
-  playerDiv.appendChild(buysDiv);
 
   return playerDiv;
 }
@@ -119,8 +121,8 @@ function displayLeaderboard(players) {
 
   const sortedPlayers = players;
 
-  sortedPlayers.forEach((player) => {
-    const playerElement = createPlayerElement(player);
+  sortedPlayers.forEach((player, i) => {
+    const playerElement = createPlayerElement(player, i + 1);
     container.appendChild(playerElement);
   });
 }
@@ -172,49 +174,33 @@ let players = [];
 const storedPlayers = localStorage.getItem("players");
 if (storedPlayers) {
   players = JSON.parse(storedPlayers);
-  console.log(players);
 } else {
-  players = [
-    {
-      name: "Mom",
-      round1: 0,
-      round2: 0,
-      round3: 0,
-      round4: 0,
-      round5: 0,
-      round6: 0,
-      round7: 0,
-      score: 0,
-      buys: 12,
-    },
-    {
-      name: "Bess",
-      round1: 0,
-      round2: 0,
-      round3: 0,
-      round4: 0,
-      round5: 0,
-      round6: 0,
-      round7: 0,
-      score: 0,
-      buys: 12,
-    },
-    {
-      name: "Pop",
-      round1: 0,
-      round2: 0,
-      round3: 0,
-      round4: 0,
-      round5: 0,
-      round6: 0,
-      round7: 0,
-      score: 0,
-      buys: 12,
-    },
-  ];
+  players = [];
 }
-console.log(players);
 
 // Initial display of leaderboard
 displayLeaderboard(players);
 displayScoreboard(players);
+
+// Add event listeners to input fields representing scores
+function addScoreChangeListeners() {
+  const scoreInputs = document.querySelectorAll(".scores input");
+  scoreInputs.forEach((input) => {
+    input.addEventListener("change", function () {
+      let playerId = parseInt(this.dataset.playerId);
+      let roundNumber = parseInt(this.dataset.roundNumber);
+      let score = parseInt(this.value);
+
+      // Update the score for the corresponding round in storedPlayers
+      storedPlayers[playerId - 1][`round${roundNumber}`] = score;
+
+      // Save the updated data to localStorage
+      localStorage.setItem("players", JSON.stringify(storedPlayers));
+
+      // Update the scoreboard
+      updateScoreboard();
+    });
+  });
+}
+
+addScoreChangeListeners();
