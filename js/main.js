@@ -93,16 +93,18 @@ function sortPlayersByScore(players) {
     .reverse();
 }
 
-function displayScoreboard(players) {
-  const container = d.getElementById("scoreboard");
+function displayLeaderboard(players) {
+  const container = d.getElementById("leaderboard");
 
   // Clear previous scoreboard
   container.innerHTML = "";
 
-  const scoreboardHeading = d.createElement("h2");
-  scoreboardHeading.classList.add("scoreboard-heading");
-  scoreboardHeading.textContent = "Leaderboard";
-  container.appendChild(scoreboardHeading);
+  if (players.length > 0) {
+    const scoreboardHeading = d.createElement("h2");
+    scoreboardHeading.classList.add("leaderboard-heading");
+    scoreboardHeading.textContent = "Leaderboard";
+    container.appendChild(scoreboardHeading);
+  }
 
   const sortedPlayers = sortPlayersByScore(players);
 
@@ -126,8 +128,8 @@ function displayScoreboard(players) {
   });
 }
 
-function displayLeaderboard(players) {
-  const container = d.getElementById("leaderboard");
+function displayScoreboard(players) {
+  const container = d.getElementById("scoreboard");
   container.innerHTML = ""; // Clear previous leaderboard
 
   const sortedPlayers = players;
@@ -138,12 +140,12 @@ function displayLeaderboard(players) {
   });
 }
 
-function updateScoreboard() {
+function updateLeaderboard() {
   displayScoreboard(players);
 }
 
-function updateLeaderboard() {
-  displayLeaderboard(players);
+function updateScoreboard() {
+  displayScoreboard(players);
 }
 
 function savePlayerData(players) {
@@ -200,8 +202,8 @@ if (storedPlayers) {
 }
 
 // Initial display of leaderboard
-displayLeaderboard(players);
 displayScoreboard(players);
+displayLeaderboard(players);
 if (players.length > 0) {
   resetScoreboardButton.classList.remove("hidden");
 }

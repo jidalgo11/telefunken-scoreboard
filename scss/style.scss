@@ -15,11 +15,6 @@ body {
   background-color: $lightgray;
 }
 
-h1 {
-  font-size: 3em;
-  color: $black;
-}
-
 .container {
   width: 95%;
   max-width: 1400px;
@@ -38,89 +33,32 @@ header {
   background: $white;
   padding: 25px 0;
   box-shadow: 1px 1px 5px rgba($black, 0.15);
-}
-
-.game-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 5px;
-  padding: 50px 0;
-  #scoreboard {
-    width: 35%;
-    background-color: $white;
-    box-shadow: 1px 3px 5px rgba($black, 0.15);
-    border-radius: 7px;
-    .scoreboard-heading {
-      padding: 15px 15px;
-      background-color: $secondary;
-      border-top-left-radius: 7px;
-      border-top-right-radius: 7px;
-      color: $white;
-      font-size: 2.25rem;
-    }
-    .player {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 15px;
-      background-color: $gray;
-      &:nth-child(even) {
-        background-color: $white;
-      }
-      & > * {
-        flex: 1;
-      }
-      p {
-        text-align: center;
-      }
-    }
-  }
-  #leaderboard {
-    width: 63%;
-    // background-color: darken($gray, 3%);
-  }
-}
-
-#leaderboard {
-  display: grid;
-  grid-template-columns: 32% 32% 32%;
-  justify-content: space-between;
-  gap: 10px;
-  border-radius: 7px;
-  .player-scorecard {
+  .header-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
     flex-direction: column;
-    background-color: $white;
-    border-radius: 7px;
-    padding: 15px 20px;
-    box-shadow: 1px 3px 5px rgba($black, 0.15);
-    .player-name {
-      display: flex;
-      align-items: center;
-      gap: 0px 20px;
-      span {
-        font-size: 2.15rem;
-        font-weight: 700;
-        color: $primary;
-      }
-      h2 {
-        font-size: 1.55rem;
-        color: $primary;
-      }
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    h1 {
+      font-size: 3em;
+      color: $black;
+      margin-bottom: 20px;
     }
-    .scores {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      label {
-        font-weight: 700;
-      }
+    .add-player-wrapper {
       input {
-        border-radius: 7px;
-        border: 1px $gray solid;
+        background: $lightgray;
+        border: none;
+        padding: 5px 10px;
+        border: 2px $gray solid;
+        margin: 0;
+        width: 175px;
+      }
+      button {
+        background: $primary;
+        padding: 5px 10px;
+        color: $white;
+        border: none;
+        border: 2px $primary solid;
       }
     }
   }
@@ -163,4 +101,88 @@ input[type="checkbox"] {
   color: $white;
   font-weight: 700;
   cursor: pointer;
+}
+
+@media screen and (min-width: 1024px) {
+  .game-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 5px;
+    padding: 50px 0;
+    #leaderboard {
+      width: 35%;
+      background-color: $white;
+      box-shadow: 1px 3px 5px rgba($black, 0.15);
+      border-radius: 7px;
+      .leaderboard-heading {
+        padding: 15px 15px;
+        background-color: $secondary;
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+        color: $white;
+        font-size: 2.25rem;
+      }
+      .player {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 15px;
+        background-color: $gray;
+        &:nth-child(even) {
+          background-color: $white;
+        }
+        & > * {
+          flex: 1;
+        }
+        p {
+          text-align: center;
+        }
+      }
+    }
+    #scoreboard {
+      display: grid;
+      grid-template-columns: 32% 32% 32%;
+      justify-content: space-between;
+      gap: 10px;
+      border-radius: 7px;
+      width: 63%;
+      .player-scorecard {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        flex-direction: column;
+        background-color: $white;
+        border-radius: 7px;
+        padding: 15px 20px;
+        box-shadow: 1px 3px 5px rgba($black, 0.15);
+        .player-name {
+          display: flex;
+          align-items: center;
+          gap: 0px 20px;
+          span {
+            font-size: 2.15rem;
+            font-weight: 700;
+            color: $primary;
+          }
+          h2 {
+            font-size: 1.55rem;
+            color: $primary;
+          }
+        }
+        .scores {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          label {
+            font-weight: 700;
+          }
+          input {
+            border-radius: 7px;
+            border: 1px $gray solid;
+          }
+        }
+      }
+    }
+  }
 }
