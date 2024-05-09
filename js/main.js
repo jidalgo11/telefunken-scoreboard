@@ -4,7 +4,7 @@ const d = document;
 
 const playerNameInput = d.getElementById("playerNameInput");
 const addPlayerButton = d.getElementById("addPlayerButton");
-const newGameButton = d.getElementById("newGameButton");
+const resetScoreboardButton = d.getElementById("resetScoreboardButton");
 
 function createPlayerElement(player, playerId) {
   const playerDiv = d.createElement("div");
@@ -175,10 +175,20 @@ addPlayerButton.addEventListener("click", function () {
     playerNameInput.value = "";
     // Save the updated player data to localStorage
     savePlayerData(players);
+    resetScoreboardButton.classList.remove("hidden");
   } else {
     alert("Please enter a player name");
   }
 });
+
+if (playerNameInput) {
+  playerNameInput.addEventListener("keyup", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      addPlayerButton.click();
+    }
+  });
+}
 
 // Initial player data
 let players = [];
@@ -192,6 +202,9 @@ if (storedPlayers) {
 // Initial display of leaderboard
 displayLeaderboard(players);
 displayScoreboard(players);
+if (players.length > 0) {
+  resetScoreboardButton.classList.remove("hidden");
+}
 
 // Add event listeners to input fields representing scores
 function addScoreChangeListeners() {
@@ -201,6 +214,8 @@ function addScoreChangeListeners() {
       let playerId = parseInt(this.dataset.playerId);
       let roundNumber = parseInt(this.dataset.roundNumber);
       let score = parseInt(this.value);
+
+      let storedPlayers = JSON.parse(localStorage.getItem("players"));
 
       // Update the score for the corresponding round in storedPlayers
       storedPlayers[playerId - 1][`round${roundNumber}`] = score;
@@ -214,10 +229,15 @@ function addScoreChangeListeners() {
   });
 }
 
-newGameButton.addEventListener("click", function () {
-  alert("Are you sure you want to start a new game?");
-  localStorage.removeItem("players");
-  location.reload();
+resetScoreboardButton.addEventListener("click", function () {
+  const confirmation = confirm(
+    "Are you sure you want to reset the scoreboard?"
+  );
+  if (confirmation) {
+    localStorage.removeItem("players");
+    resetScoreboardButton.classList.add("hidden");
+    location.reload();
+  }
 });
 
 addScoreChangeListeners();

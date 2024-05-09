@@ -52,7 +52,7 @@ header {
     box-shadow: 1px 3px 5px rgba($black, 0.15);
     border-radius: 7px;
     .scoreboard-heading {
-      padding: 20px 15px;
+      padding: 15px 15px;
       background-color: $secondary;
       border-top-left-radius: 7px;
       border-top-right-radius: 7px;
@@ -138,10 +138,29 @@ input[type="checkbox"] {
     height: 25px;
     background: #fff;
     display: block;
-    border: 1px solid rgba(220, 38, 38);
+    border: 1px solid firebrick;
     border-radius: 50%;
   }
   &:checked:after {
-    background: rgba(220, 38, 38);
+    background: firebrick;
   }
+}
+
+.hidden {
+  display: none;
+}
+
+#resetScoreboardButton {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  width: 105px;
+  height: 105px;
+  padding: 15px;
+  border-radius: 50%;
+  border: none;
+  background-color: $primary;
+  color: $white;
+  font-weight: 700;
+  cursor: pointer;
 }
