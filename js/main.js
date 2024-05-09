@@ -42,7 +42,7 @@ function createPlayerElement(player, playerId) {
       // Update the player's score property
       player.score = totalScore;
       // Update the scoreboard
-      updateScoreboard();
+      updateLeaderboard();
       savePlayerData(players);
     });
     roundInputLabels.textContent = `Round ${i} - ${roundLabels[i - 1]}`;
@@ -69,7 +69,7 @@ function createPlayerElement(player, playerId) {
       } else {
         player.buys += 1;
       }
-      updateScoreboard();
+      updateLeaderboard();
       savePlayerData(players);
     });
   }
@@ -103,7 +103,18 @@ function displayLeaderboard(players) {
     const scoreboardHeading = d.createElement("h2");
     scoreboardHeading.classList.add("leaderboard-heading");
     scoreboardHeading.textContent = "Leaderboard";
+
+    const playerLabels = d.createElement("div");
+    playerLabels.classList.add("player-labels");
+    const leaderboardLabels = ["Name", "Score", "Buys Left"];
+    for (let i = 0; i < 3; i++) {
+      const playerLabel = d.createElement("p");
+      playerLabel.textContent = leaderboardLabels[i];
+      playerLabels.appendChild(playerLabel);
+    }
+
     container.appendChild(scoreboardHeading);
+    container.appendChild(playerLabels);
   }
 
   const sortedPlayers = sortPlayersByScore(players);
@@ -117,11 +128,11 @@ function displayLeaderboard(players) {
     playerDiv.appendChild(playerNameElement);
 
     const scoreElement = d.createElement("p");
-    scoreElement.textContent = `Score: ${player.score}`;
+    scoreElement.textContent = player.score;
     playerDiv.appendChild(scoreElement);
 
     const buysElement = d.createElement("p");
-    buysElement.textContent = `Buys: ${player.buys}`;
+    buysElement.textContent = player.buys;
     playerDiv.appendChild(buysElement);
 
     container.appendChild(playerDiv);
@@ -141,7 +152,7 @@ function displayScoreboard(players) {
 }
 
 function updateLeaderboard() {
-  displayScoreboard(players);
+  displayLeaderboard(players);
 }
 
 function updateScoreboard() {
@@ -171,8 +182,8 @@ addPlayerButton.addEventListener("click", function () {
     };
     players.push(newPlayer);
     // Re-generate leaderboard and display it on the webpage
-    updateLeaderboard();
     updateScoreboard();
+    updateLeaderboard();
     // Clear the input field
     playerNameInput.value = "";
     // Save the updated player data to localStorage

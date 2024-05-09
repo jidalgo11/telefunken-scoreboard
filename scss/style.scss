@@ -104,6 +104,14 @@ input[type="checkbox"] {
 }
 
 @media screen and (min-width: 1024px) {
+  header .header-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    h1 {
+      margin-bottom: 0;
+    }
+  }
   .game-wrapper {
     display: flex;
     flex-wrap: wrap;
