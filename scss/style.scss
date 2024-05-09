@@ -11,7 +11,7 @@ $black: #00171f;
 
 body {
   font-family: Oxygen, Arial, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   background-color: $lightgray;
 }
 
@@ -92,14 +92,15 @@ input[type="checkbox"] {
   position: fixed;
   bottom: 5%;
   right: 5%;
-  width: 105px;
-  height: 105px;
+  width: 100px;
+  height: 100px;
   padding: 15px;
   border-radius: 50%;
   border: none;
-  background-color: $primary;
-  color: $white;
+  font-size: 0.8em;
+  background-color: $secondary;
   font-weight: 700;
+  color: $white;
   cursor: pointer;
 }
 
