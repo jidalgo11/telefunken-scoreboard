@@ -4,6 +4,7 @@ const d = document;
 
 const playerNameInput = d.getElementById("playerNameInput");
 const addPlayerButton = d.getElementById("addPlayerButton");
+const newGameButton = d.getElementById("newGameButton");
 
 function createPlayerElement(player, playerId) {
   const playerDiv = d.createElement("div");
@@ -11,7 +12,8 @@ function createPlayerElement(player, playerId) {
   const buysDiv = d.createElement("div");
   const scoreDiv = d.createElement("div");
 
-  playerDiv.classList.add("player");
+  playerDiv.classList.add("player-scorecard");
+  playerDiv.dataset.playerId = playerId;
   playerNameDiv.classList.add("player-name");
   buysDiv.classList.add("buys");
   scoreDiv.classList.add("scores");
@@ -32,35 +34,34 @@ function createPlayerElement(player, playerId) {
     roundInput.value = player[`round${i}`] || 0; // Initialize with player's score for the round or 0
     roundInput.dataset.playerId = playerId;
     roundInput.dataset.roundNumber = i;
-    roundInput.addEventListener("change", function () {
-      // Update the player's score for the corresponding round
-      player[`round${i}`] = parseInt(this.value) || 0;
-      // Recalculate the total score
-      const totalScore = calculateTotalScore(player);
-      // Update the player's score property
-      player.score = totalScore;
-      // Update the scoreboard
-      updateScoreboard();
-      savePlayerData(players);
-    });
-    roundInputLabels.textContent = roundLabels[i - 1];
+    roundInputLabels.textContent = `Round ${i} - ${roundLabels[i - 1]}`;
     scoreDiv.appendChild(roundInputLabels);
     scoreDiv.appendChild(roundInput);
     playerDiv.appendChild(scoreDiv);
     roundInputs.push(roundInput);
   }
 
-  console.log(roundInputs);
-
   const buysElement = d.createElement("h3");
   buysElement.textContent = `Buys`;
   buysDiv.appendChild(buysElement);
   playerDiv.appendChild(buysDiv);
 
-  for (let i = 0; i <= 12; i++) {
+  // Add checkboxes based on player.buys from localStorage
+  for (let i = 0; i < 12; i++) {
     const pepasElement = d.createElement("input");
     pepasElement.type = "checkbox";
+    pepasElement.checked = i < player.buys; // Check checkboxes based on player.buys
     buysDiv.appendChild(pepasElement);
+    pepasElement.dataset.playerId = playerId;
+    pepasElement.addEventListener("click", function () {
+      if (!this.checked) {
+        player.buys -= 1;
+      } else {
+        player.buys += 1;
+      }
+      updateScoreboard();
+      savePlayerData(players);
+    });
   }
 
   return playerDiv;
@@ -184,7 +185,7 @@ displayScoreboard(players);
 
 // Add event listeners to input fields representing scores
 function addScoreChangeListeners() {
-  const scoreInputs = document.querySelectorAll(".scores input");
+  const scoreInputs = d.querySelectorAll(".scores input");
   scoreInputs.forEach((input) => {
     input.addEventListener("change", function () {
       let playerId = parseInt(this.dataset.playerId);
@@ -202,5 +203,11 @@ function addScoreChangeListeners() {
     });
   });
 }
+
+newGameButton.addEventListener("click", function () {
+  alert("Are you sure you want to start a new game?");
+  localStorage.removeItem("players");
+  location.reload();
+});
 
 addScoreChangeListeners();
