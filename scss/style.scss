@@ -125,3 +125,23 @@ header {
     }
   }
 }
+
+input[type="checkbox"] {
+  appearance: none;
+  margin: 0;
+  i {
+    border: none;
+  }
+  &:after {
+    content: "";
+    width: 25px;
+    height: 25px;
+    background: #fff;
+    display: block;
+    border: 1px solid rgba(220, 38, 38);
+    border-radius: 50%;
+  }
+  &:checked:after {
+    background: rgba(220, 38, 38);
+  }
+}

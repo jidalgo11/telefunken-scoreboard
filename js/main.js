@@ -34,6 +34,17 @@ function createPlayerElement(player, playerId) {
     roundInput.value = player[`round${i}`] || 0; // Initialize with player's score for the round or 0
     roundInput.dataset.playerId = playerId;
     roundInput.dataset.roundNumber = i;
+    roundInput.addEventListener("change", function () {
+      // Update the player's score for the corresponding round
+      player[`round${i}`] = parseInt(this.value) || 0;
+      // Recalculate the total score
+      const totalScore = calculateTotalScore(player);
+      // Update the player's score property
+      player.score = totalScore;
+      // Update the scoreboard
+      updateScoreboard();
+      savePlayerData(players);
+    });
     roundInputLabels.textContent = `Round ${i} - ${roundLabels[i - 1]}`;
     scoreDiv.appendChild(roundInputLabels);
     scoreDiv.appendChild(roundInput);
@@ -46,11 +57,10 @@ function createPlayerElement(player, playerId) {
   buysDiv.appendChild(buysElement);
   playerDiv.appendChild(buysDiv);
 
-  // Add checkboxes based on player.buys from localStorage
   for (let i = 0; i < 12; i++) {
     const pepasElement = d.createElement("input");
     pepasElement.type = "checkbox";
-    pepasElement.checked = i < player.buys; // Check checkboxes based on player.buys
+    pepasElement.checked = i < player.buys;
     buysDiv.appendChild(pepasElement);
     pepasElement.dataset.playerId = playerId;
     pepasElement.addEventListener("click", function () {
