@@ -7,7 +7,7 @@ $secondary: #007ea7;
 $white: #fff;
 $lightgray: #f4f4f4;
 $gray: #efefef;
-$black: #00171f;
+$black: #222;
 
 body {
   font-family: Rubik, Arial, Helvetica, sans-serif;
@@ -16,7 +16,7 @@ body {
 }
 
 .container {
-  width: 95%;
+  width: 90%;
   max-width: 1400px;
   margin: 0 auto;
   position: relative;
@@ -47,17 +47,27 @@ body {
 header {
   background: $white;
   padding: 25px 0;
-  box-shadow: 1px 1px 5px rgba($black, 0.15);
+  box-shadow: 0 3px 10px rgba($black, 0.15);
   .header-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     flex-wrap: wrap;
     text-align: center;
-    h1 {
-      font-size: 3.15em;
+    .logo {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 25px;
       color: $primary;
-      margin-bottom: 20px;
+      h1 {
+        font-size: 3em;
+        line-height: 1em;
+      }
+      span {
+        text-transform: uppercase;
+        font-weight: 500;
+        letter-spacing: 1px;
+      }
     }
     .add-player-wrapper {
       display: flex;
@@ -124,20 +134,22 @@ input[type="checkbox"] {
 .game-wrapper {
   display: flex;
   flex-direction: column;
-  padding: 40px 0;
-  gap: 25px;
+  padding: 45px 0;
+  gap: 30px;
   #leaderboard {
     background-color: $white;
     box-shadow: 1px 3px 5px rgba($black, 0.15);
+    box-shadow: 1px 3px 7px rgba($black, 0.15);
     border-radius: 5px;
     .leaderboard-heading {
       background-color: $primary;
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
       color: $white;
-      padding: 10px 20px;
+      padding: 15px 20px;
       font-size: 1.75rem;
       font-weight: 600;
+      text-align: center;
     }
     .player-labels,
     .player {
@@ -147,23 +159,29 @@ input[type="checkbox"] {
       padding: 20px;
     }
     .player-labels {
+      padding: 10px 20px;
+      background: darken($gray, 10%);
       p {
         width: 30%;
         font-weight: 600;
         font-size: 0.9rem;
-        color: darken($gray, 25%);
+        color: $black;
         &:nth-child(n + 2) {
           text-align: center;
         }
       }
     }
     .player {
-      background-color: $gray;
+      background-color: $white;
       &:nth-child(even) {
-        background-color: $white;
+        background-color: $gray;
       }
       & > * {
         flex: 1;
+      }
+      &:last-child {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
       }
       p {
         width: 30%;
@@ -171,7 +189,7 @@ input[type="checkbox"] {
         color: $primary;
         &:first-of-type {
           font-weight: 600;
-          font-size: 1.2rem;
+          font-size: 1.275rem;
         }
         &:last-of-type {
           color: firebrick;
@@ -198,7 +216,7 @@ input[type="checkbox"] {
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
         color: $white;
-        padding: 5px 15px;
+        padding: 10px 15px;
         h2 {
           font-weight: 500;
         }
@@ -209,12 +227,14 @@ input[type="checkbox"] {
         padding: 0 15px;
         label {
           font-weight: 600;
+          color: #777;
         }
         input {
-          margin-bottom: 10px;
+          margin-bottom: 12px;
           border-radius: 5px;
           border: 1px $gray solid;
           padding-left: 5px;
+          color: #777;
         }
       }
       .buys {
@@ -239,7 +259,7 @@ input[type="checkbox"] {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    h1 {
+    .logo {
       margin-bottom: 0;
     }
   }
@@ -259,10 +279,14 @@ input[type="checkbox"] {
       .leaderboard-heading {
         padding: 15px 25px;
         font-size: 2.25rem;
+        text-align: left;
       }
       .player-labels,
       .player {
-        padding: 20px 25px;
+        padding: 25px;
+      }
+      .player-labels {
+        padding: 10px 25px;
       }
     }
     #scoreboard {
