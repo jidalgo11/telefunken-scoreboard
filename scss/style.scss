@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300..900&display=swap");
 @import "reset";
 
 // Variables
@@ -10,7 +10,7 @@ $gray: #efefef;
 $black: #00171f;
 
 body {
-  font-family: Oxygen, Arial, Helvetica, sans-serif;
+  font-family: Rubik, Arial, Helvetica, sans-serif;
   font-size: 16px;
   background-color: $lightgray;
 }
@@ -23,12 +23,27 @@ body {
   height: inherit;
 }
 
-.header-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+#resetScoreboardButton {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  width: 100px;
+  height: 100px;
+  padding: 15px;
+  border-radius: 50%;
+  border: none;
+  font-size: 0.8em;
+  background-color: $secondary;
+  font-weight: 700;
+  color: $white;
+  cursor: pointer;
 }
 
+.hidden {
+  display: none;
+}
+
+// Header
 header {
   background: $white;
   padding: 25px 0;
@@ -64,44 +79,59 @@ header {
   }
 }
 
-input[type="checkbox"] {
-  appearance: none;
-  margin: 0;
-  i {
-    border: none;
+// Game wrapper
+.game-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 0;
+  gap: 10px;
+  #leaderboard {
+    background-color: $white;
+    box-shadow: 1px 3px 5px rgba($black, 0.15);
+    border-radius: 5px;
+    .leaderboard-heading {
+      background-color: $secondary;
+      border-top-left-radius: 7px;
+      border-top-right-radius: 7px;
+      color: $white;
+      padding: 10px 15px;
+      font-size: 1.75rem;
+      font-weight: 600;
+    }
+    .player-labels,
+    .player {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+    }
+    .player-labels {
+      p {
+        width: 30%;
+        font-weight: 600;
+        &:nth-child(n + 2) {
+          text-align: center;
+        }
+      }
+    }
+    .player {
+      background-color: $gray;
+      &:nth-child(even) {
+        background-color: $white;
+      }
+      & > * {
+        flex: 1;
+      }
+      p {
+        width: 30%;
+        &:nth-child(n + 2) {
+          text-align: center;
+        }
+      }
+    }
   }
-  &:after {
-    content: "";
-    width: 25px;
-    height: 25px;
-    background: #fff;
-    display: block;
-    border: 1px solid firebrick;
-    border-radius: 50%;
+  #scoreboard {
   }
-  &:checked:after {
-    background: firebrick;
-  }
-}
-
-.hidden {
-  display: none;
-}
-
-#resetScoreboardButton {
-  position: fixed;
-  bottom: 5%;
-  right: 5%;
-  width: 100px;
-  height: 100px;
-  padding: 15px;
-  border-radius: 50%;
-  border: none;
-  font-size: 0.8em;
-  background-color: $secondary;
-  font-weight: 700;
-  color: $white;
-  cursor: pointer;
 }
 
 @media screen and (min-width: 1024px) {
@@ -114,39 +144,20 @@ input[type="checkbox"] {
     }
   }
   .game-wrapper {
-    display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-between;
     gap: 5px;
     padding: 50px 0;
     #leaderboard {
       width: 35%;
-      background-color: $white;
-      box-shadow: 1px 3px 5px rgba($black, 0.15);
-      border-radius: 7px;
       .leaderboard-heading {
-        padding: 15px 15px;
-        background-color: $secondary;
-        border-top-left-radius: 7px;
-        border-top-right-radius: 7px;
-        color: $white;
+        padding: 20px;
         font-size: 2.25rem;
       }
+      .player-labels,
       .player {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 15px;
-        background-color: $gray;
-        &:nth-child(even) {
-          background-color: $white;
-        }
-        & > * {
-          flex: 1;
-        }
-        p {
-          text-align: center;
-        }
+        padding: 20px;
       }
     }
     #scoreboard {
@@ -154,7 +165,7 @@ input[type="checkbox"] {
       grid-template-columns: 32% 32% 32%;
       justify-content: space-between;
       gap: 10px;
-      border-radius: 7px;
+      border-radius: 5px;
       width: 63%;
       .player-scorecard {
         display: flex;
@@ -162,7 +173,7 @@ input[type="checkbox"] {
         justify-content: space-around;
         flex-direction: column;
         background-color: $white;
-        border-radius: 7px;
+        border-radius: 5px;
         padding: 15px 20px;
         box-shadow: 1px 3px 5px rgba($black, 0.15);
         .player-name {
@@ -187,11 +198,31 @@ input[type="checkbox"] {
             font-weight: 700;
           }
           input {
-            border-radius: 7px;
+            border-radius: 5px;
             border: 1px $gray solid;
           }
         }
       }
     }
+  }
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  margin: 0;
+  i {
+    border: none;
+  }
+  &:after {
+    content: "";
+    width: 25px;
+    height: 25px;
+    background: #fff;
+    display: block;
+    border: 1px solid firebrick;
+    border-radius: 50%;
+  }
+  &:checked:after {
+    background: firebrick;
   }
 }

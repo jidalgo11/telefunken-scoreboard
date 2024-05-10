@@ -123,7 +123,7 @@ function displayLeaderboard(players) {
     const playerDiv = d.createElement("div");
     playerDiv.classList.add("player");
 
-    const playerNameElement = d.createElement("h3");
+    const playerNameElement = d.createElement("p");
     playerNameElement.textContent = `${i + 1} ${player.name}`;
     playerDiv.appendChild(playerNameElement);
 
