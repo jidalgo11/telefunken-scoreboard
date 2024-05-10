@@ -26,7 +26,7 @@ body {
 #resetScoreboardButton {
   position: fixed;
   bottom: 5%;
-  right: 5%;
+  left: 10%;
   width: 100px;
   height: 100px;
   padding: 15px;
@@ -77,6 +77,26 @@ header {
         cursor: pointer;
       }
     }
+  }
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  i {
+    border: none;
+  }
+  &:after {
+    content: "";
+    width: 27px;
+    height: 27px;
+    background: #fff;
+    display: block;
+    border: 1px solid rgba(firebrick, 0.25);
+    border-radius: 50%;
+  }
+  &:checked:after {
+    border: 1px solid firebrick;
+    background: firebrick;
   }
 }
 
@@ -178,14 +198,18 @@ header {
         }
       }
       .buys {
-        display: flex;
-        flex-wrap: wrap;
+        // display: flex;
+        // flex-wrap: wrap;
         padding: 0 15px 15px 15px;
-        gap: 5px;
+        // gap: 15px 20px;
         h3 {
           width: 100%;
           margin-bottom: 5px;
           font-weight: 600;
+        }
+        input {
+          margin-right: 15px;
+          margin-bottom: 5px;
         }
       }
     }
@@ -229,28 +253,10 @@ header {
         .player-name h2 {
           font-size: 1.55rem;
         }
+        .buys {
+          gap: 5px;
+        }
       }
     }
-  }
-}
-
-input[type="checkbox"] {
-  appearance: none;
-  margin: 0;
-  i {
-    border: none;
-  }
-  &:after {
-    content: "";
-    width: 25px;
-    height: 25px;
-    background: #fff;
-    display: block;
-    border: 1px solid rgba(firebrick, 0.25);
-    border-radius: 50%;
-  }
-  &:checked:after {
-    border: 1px solid firebrick;
-    background: firebrick;
   }
 }
