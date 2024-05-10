@@ -85,7 +85,7 @@ header {
   display: flex;
   flex-direction: column;
   padding: 40px 0;
-  gap: 15px;
+  gap: 25px;
   #leaderboard {
     background-color: $white;
     box-shadow: 1px 3px 5px rgba($black, 0.15);
@@ -143,6 +143,52 @@ header {
     }
   }
   #scoreboard {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    .player-scorecard {
+      display: flex;
+      flex-direction: column;
+      background-color: $white;
+      border-radius: 5px;
+      box-shadow: 1px 3px 5px rgba($black, 0.15);
+      row-gap: 15px;
+      .player-name {
+        background-color: $secondary;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        color: $white;
+        padding: 5px 15px;
+        h2 {
+          font-weight: 500;
+        }
+      }
+      .scores {
+        display: flex;
+        flex-direction: column;
+        padding: 0 15px;
+        label {
+          font-weight: 600;
+        }
+        input {
+          margin-bottom: 10px;
+          border-radius: 5px;
+          border: 1px $gray solid;
+          padding-left: 5px;
+        }
+      }
+      .buys {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 15px 15px 15px;
+        gap: 5px;
+        h3 {
+          width: 100%;
+          margin-bottom: 5px;
+          font-weight: 600;
+        }
+      }
+    }
   }
 }
 
@@ -175,45 +221,13 @@ header {
     }
     #scoreboard {
       display: grid;
-      grid-template-columns: 32% 32% 32%;
+      grid-template-columns: 50% 50%;
       justify-content: space-between;
       gap: 10px;
-      border-radius: 5px;
       width: 63%;
       .player-scorecard {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        flex-direction: column;
-        background-color: $white;
-        border-radius: 5px;
-        padding: 15px 20px;
-        box-shadow: 1px 3px 5px rgba($black, 0.15);
-        .player-name {
-          display: flex;
-          align-items: center;
-          gap: 0px 20px;
-          span {
-            font-size: 2.15rem;
-            font-weight: 700;
-            color: $primary;
-          }
-          h2 {
-            font-size: 1.55rem;
-            color: $primary;
-          }
-        }
-        .scores {
-          display: flex;
-          flex-direction: column;
-          gap: 5px;
-          label {
-            font-weight: 700;
-          }
-          input {
-            border-radius: 5px;
-            border: 1px $gray solid;
-          }
+        .player-name h2 {
+          font-size: 1.55rem;
         }
       }
     }
@@ -232,10 +246,11 @@ input[type="checkbox"] {
     height: 25px;
     background: #fff;
     display: block;
-    border: 1px solid firebrick;
+    border: 1px solid rgba(firebrick, 0.25);
     border-radius: 50%;
   }
   &:checked:after {
+    border: 1px solid firebrick;
     background: firebrick;
   }
 }
