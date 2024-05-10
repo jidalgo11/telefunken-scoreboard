@@ -5,6 +5,7 @@ const d = document;
 const playerNameInput = d.getElementById("playerNameInput");
 const addPlayerButton = d.getElementById("addPlayerButton");
 const resetScoreboardButton = d.getElementById("resetScoreboardButton");
+const gameMessage = d.getElementById("gameMessage");
 
 function createPlayerElement(player, playerId) {
   const playerDiv = d.createElement("div");
@@ -189,6 +190,7 @@ addPlayerButton.addEventListener("click", function () {
     // Save the updated player data to localStorage
     savePlayerData(players);
     resetScoreboardButton.classList.remove("hidden");
+    gameMessage.classList.add("hidden");
   } else {
     alert("Please enter a player name");
   }
@@ -217,6 +219,7 @@ displayScoreboard(players);
 displayLeaderboard(players);
 if (players.length > 0) {
   resetScoreboardButton.classList.remove("hidden");
+  gameMessage.classList.add("hidden");
 }
 
 // Add event listeners to input fields representing scores
