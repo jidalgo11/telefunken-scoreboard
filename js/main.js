@@ -5,6 +5,7 @@ const d = document;
 const playerNameInput = d.getElementById("playerNameInput");
 const addPlayerButton = d.getElementById("addPlayerButton");
 const resetScoreboardButton = d.getElementById("resetScoreboardButton");
+const navigation = d.getElementById("navigation");
 const gameMessage = d.getElementById("gameMessage");
 
 function createPlayerElement(player, playerId) {
@@ -14,6 +15,7 @@ function createPlayerElement(player, playerId) {
   const scoreDiv = d.createElement("div");
 
   playerDiv.classList.add("player-scorecard");
+  playerDiv.setAttribute("id", `${player.name.toLowerCase()}_${playerId}`);
   playerDiv.dataset.playerId = playerId;
   playerNameDiv.classList.add("player-name");
   buysDiv.classList.add("buys");

@@ -160,11 +160,11 @@ input[type="checkbox"] {
     }
     .player-labels {
       padding: 10px 20px;
-      background: darken($gray, 10%);
+      background: darken($gray, 5%);
       p {
         width: 30%;
         font-weight: 600;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         color: $black;
         &:nth-child(n + 2) {
           text-align: center;
