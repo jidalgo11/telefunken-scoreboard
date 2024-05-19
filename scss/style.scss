@@ -10,302 +10,333 @@ $gray: #efefef;
 $black: #222;
 
 body {
-  font-family: Rubik, Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  background-color: $lightgray;
+	font-family: Rubik, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	background-color: $lightgray;
 }
 
 .container {
-  width: 90%;
-  max-width: 1400px;
-  margin: 0 auto;
-  position: relative;
-  height: inherit;
+	width: 90%;
+	max-width: 1400px;
+	margin: 0 auto;
+	position: relative;
+	height: inherit;
 }
 
 #resetScoreboardButton {
-  position: fixed;
-  bottom: 5%;
-  left: 10%;
-  width: 100px;
-  height: 100px;
-  padding: 15px;
-  border-radius: 50%;
-  border: none;
-  font-size: 0.8em;
-  background-color: $secondary;
-  font-weight: 700;
-  color: $white;
-  cursor: pointer;
+	position: fixed;
+	bottom: 5%;
+	left: 10%;
+	width: 100px;
+	height: 100px;
+	padding: 15px;
+	border-radius: 50%;
+	border: none;
+	font-size: 0.8em;
+	background-color: $secondary;
+	font-weight: 700;
+	color: $white;
+	cursor: pointer;
 }
 
 .hidden {
-  display: none;
+	display: none;
 }
 
 // Header
 header {
-  background: $white;
-  padding: 25px 0;
-  box-shadow: 0 3px 10px rgba($black, 0.15);
-  .header-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex-wrap: wrap;
-    text-align: center;
-    .logo {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 25px;
-      color: $primary;
-      h1 {
-        font-size: 3em;
-        line-height: 1em;
-      }
-      span {
-        text-transform: uppercase;
-        font-weight: 500;
-        letter-spacing: 1px;
-      }
-    }
-    .add-player-wrapper {
-      display: flex;
-      justify-content: center;
-      input {
-        background: $lightgray;
-        padding: 5px 10px;
-        border: 1px $gray solid;
-        margin: 0;
-        width: 225px;
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
-        &:focus {
-          outline: none;
-          border: 1px rgba($primary, 0.55) solid;
-          border-right: none;
-        }
-      }
-      button {
-        background: $primary;
-        padding: 5px 10px;
-        color: $white;
-        border: 1px $primary solid;
-        margin: 0;
-        cursor: pointer;
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
-      }
-    }
-  }
+	background: $white;
+	padding: 25px 0;
+	box-shadow: 0 3px 10px rgba($black, 0.15);
+	.header-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		flex-wrap: wrap;
+		text-align: center;
+		.logo {
+			display: flex;
+			flex-direction: column;
+			margin-bottom: 25px;
+			color: $primary;
+			h1 {
+				font-size: 3em;
+				line-height: 1em;
+			}
+			span {
+				text-transform: uppercase;
+				font-weight: 500;
+				letter-spacing: 1px;
+			}
+		}
+		.add-player-wrapper {
+			display: flex;
+			justify-content: center;
+			input {
+				background: $lightgray;
+				padding: 5px 10px;
+				border: 1px $gray solid;
+				margin: 0;
+				width: 225px;
+				border-top-left-radius: 5px;
+				border-bottom-left-radius: 5px;
+				&:focus {
+					outline: none;
+					border: 1px rgba($primary, 0.55) solid;
+					border-right: none;
+				}
+			}
+			button {
+				background: $primary;
+				padding: 5px 10px;
+				color: $white;
+				border: 1px $primary solid;
+				margin: 0;
+				cursor: pointer;
+				border-top-right-radius: 5px;
+				border-bottom-right-radius: 5px;
+			}
+		}
+	}
+}
+
+#navigation {
+	position: fixed;
+	width: 100%;
+	height: inherit;
+	background-color: $secondary;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	color: $white;
+	padding: 0 15px;
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 25px;
+		padding: 0;
+		li {
+			list-style-type: none;
+			a {
+				color: $white;
+				text-decoration: none;
+				font-weight: 500;
+				font-size: 1.1rem;
+			}
+		}
+	}
 }
 
 input[type="checkbox"] {
-  appearance: none;
-  i {
-    border: none;
-  }
-  &:after {
-    content: "";
-    width: 27px;
-    height: 27px;
-    background: #fff;
-    display: block;
-    border: 1px solid rgba(firebrick, 0.25);
-    border-radius: 50%;
-  }
-  &:checked:after {
-    border: 1px solid firebrick;
-    background: firebrick;
-  }
+	appearance: none;
+	i {
+		border: none;
+	}
+	&:after {
+		content: "";
+		width: 27px;
+		height: 27px;
+		background: #fff;
+		display: block;
+		border: 1px solid rgba(firebrick, 0.25);
+		border-radius: 50%;
+	}
+	&:checked:after {
+		border: 1px solid firebrick;
+		background: firebrick;
+	}
 }
 
 // Game Message
 #gameMessage {
-  width: 90%;
-  text-align: center;
-  margin: 50px auto;
-  font-size: 1.65rem;
-  color: rgba($secondary, 0.65);
-  font-weight: 700;
+	width: 90%;
+	text-align: center;
+	margin: 50px auto;
+	font-size: 1.65rem;
+	color: rgba($secondary, 0.65);
+	font-weight: 700;
 }
 
 // Game wrapper
 .game-wrapper {
-  display: flex;
-  flex-direction: column;
-  padding: 45px 0;
-  gap: 30px;
-  #leaderboard {
-    background-color: $white;
-    box-shadow: 1px 3px 5px rgba($black, 0.15);
-    box-shadow: 1px 3px 7px rgba($black, 0.15);
-    border-radius: 5px;
-    .leaderboard-heading {
-      background-color: $primary;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-      color: $white;
-      padding: 15px 20px;
-      font-size: 1.75rem;
-      font-weight: 600;
-      text-align: center;
-    }
-    .player-labels,
-    .player {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-    }
-    .player-labels {
-      padding: 10px 20px;
-      background: darken($gray, 5%);
-      p {
-        width: 30%;
-        font-weight: 600;
-        font-size: 0.85rem;
-        color: $black;
-        &:nth-child(n + 2) {
-          text-align: center;
-        }
-      }
-    }
-    .player {
-      background-color: $white;
-      &:nth-child(even) {
-        background-color: $gray;
-      }
-      & > * {
-        flex: 1;
-      }
-      &:last-child {
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
-      }
-      p {
-        width: 30%;
-        font-weight: 500;
-        color: $primary;
-        &:first-of-type {
-          font-weight: 600;
-          font-size: 1.275rem;
-        }
-        &:last-of-type {
-          color: firebrick;
-        }
-        &:nth-child(n + 2) {
-          text-align: center;
-        }
-      }
-    }
-  }
-  #scoreboard {
-    display: flex;
-    flex-direction: column;
-    row-gap: 15px;
-    .player-scorecard {
-      display: flex;
-      flex-direction: column;
-      background-color: $white;
-      border-radius: 5px;
-      box-shadow: 1px 3px 5px rgba($black, 0.15);
-      row-gap: 15px;
-      .player-name {
-        background-color: $secondary;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        color: $white;
-        padding: 10px 15px;
-        h2 {
-          font-weight: 500;
-        }
-      }
-      .scores {
-        display: flex;
-        flex-direction: column;
-        padding: 0 15px;
-        label {
-          font-weight: 600;
-          color: #777;
-        }
-        input {
-          margin-bottom: 12px;
-          border-radius: 5px;
-          border: 1px $gray solid;
-          padding-left: 5px;
-          color: #777;
-        }
-      }
-      .buys {
-        padding: 0 15px 15px 15px;
-        h3 {
-          width: 100%;
-          margin-bottom: 5px;
-          font-weight: 600;
-          color: firebrick;
-        }
-        input {
-          margin-right: 15px;
-          margin-bottom: 5px;
-        }
-      }
-    }
-  }
+	display: flex;
+	flex-direction: column;
+	padding: 45px 0;
+	gap: 30px;
+	#leaderboard {
+		background-color: $white;
+		box-shadow: 1px 3px 5px rgba($black, 0.15);
+		box-shadow: 1px 3px 7px rgba($black, 0.15);
+		border-radius: 5px;
+		.leaderboard-heading {
+			background-color: $primary;
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+			color: $white;
+			padding: 15px 20px;
+			font-size: 1.75rem;
+			font-weight: 600;
+			text-align: center;
+		}
+		.player-labels,
+		.player {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 20px;
+		}
+		.player-labels {
+			padding: 10px 20px;
+			background: darken($gray, 5%);
+			p {
+				width: 30%;
+				font-weight: 600;
+				font-size: 0.85rem;
+				color: $black;
+				&:nth-child(n + 2) {
+					text-align: center;
+				}
+			}
+		}
+		.player {
+			background-color: $white;
+			&:nth-child(even) {
+				background-color: $gray;
+			}
+			& > * {
+				flex: 1;
+			}
+			&:last-child {
+				border-bottom-left-radius: 5px;
+				border-bottom-right-radius: 5px;
+			}
+			p {
+				width: 30%;
+				font-weight: 500;
+				color: $primary;
+				&:first-of-type {
+					font-weight: 600;
+					font-size: 1.275rem;
+				}
+				&:last-of-type {
+					color: firebrick;
+				}
+				&:nth-child(n + 2) {
+					text-align: center;
+				}
+			}
+		}
+	}
+	#scoreboard {
+		display: flex;
+		flex-direction: column;
+		row-gap: 15px;
+		.player-scorecard {
+			display: flex;
+			flex-direction: column;
+			background-color: $white;
+			border-radius: 5px;
+			box-shadow: 1px 3px 5px rgba($black, 0.15);
+			row-gap: 15px;
+			.player-name {
+				background-color: $secondary;
+				border-top-left-radius: 5px;
+				border-top-right-radius: 5px;
+				color: $white;
+				padding: 10px 15px;
+				h2 {
+					font-weight: 500;
+				}
+			}
+			.scores {
+				display: flex;
+				flex-direction: column;
+				padding: 0 15px;
+				label {
+					font-weight: 600;
+					color: #777;
+				}
+				input {
+					margin-bottom: 12px;
+					border-radius: 5px;
+					border: 1px $gray solid;
+					padding-left: 5px;
+					color: #777;
+				}
+			}
+			.buys {
+				padding: 0 15px 15px 15px;
+				h3 {
+					width: 100%;
+					margin-bottom: 5px;
+					font-weight: 600;
+					color: firebrick;
+				}
+				input {
+					margin-right: 15px;
+					margin-bottom: 5px;
+				}
+			}
+		}
+	}
 }
 
 @media screen and (min-width: 1024px) {
-  header .header-container {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    .logo {
-      margin-bottom: 0;
-    }
+	header .header-container {
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		.logo {
+			margin-bottom: 0;
+		}
+	}
+  #navigation {
+    display: none;
   }
-  #gameMessage {
-    font-size: 2.25rem;
-    margin: 75px auto;
-  }
-  .game-wrapper {
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 5px;
-    padding: 50px 0;
-    #leaderboard {
-      width: 35%;
-      align-self: flex-start;
-      .leaderboard-heading {
-        padding: 15px 25px;
-        font-size: 2.25rem;
-        text-align: left;
-      }
-      .player-labels,
-      .player {
-        padding: 25px;
-      }
-      .player-labels {
-        padding: 10px 25px;
-      }
-    }
-    #scoreboard {
-      display: grid;
-      grid-template-columns: 50% 50%;
-      justify-content: space-between;
-      gap: 10px;
-      width: 63%;
-      .player-scorecard {
-        .player-name h2 {
-          font-size: 1.55rem;
-        }
-        .buys {
-          input {
-            margin-right: 5px;
-            margin-bottom: 0;
-          }
-        }
-      }
-    }
-  }
+	#gameMessage {
+		font-size: 2.25rem;
+		margin: 75px auto;
+	}
+	.game-wrapper {
+		flex-wrap: wrap;
+		flex-direction: row;
+		justify-content: space-between;
+		gap: 5px;
+		padding: 50px 0;
+		#leaderboard {
+			width: 35%;
+			align-self: flex-start;
+			.leaderboard-heading {
+				padding: 15px 25px;
+				font-size: 2.25rem;
+				text-align: left;
+			}
+			.player-labels,
+			.player {
+				padding: 25px;
+			}
+			.player-labels {
+				padding: 10px 25px;
+			}
+		}
+		#scoreboard {
+			display: grid;
+			grid-template-columns: 50% 50%;
+			justify-content: space-between;
+			gap: 10px;
+			width: 63%;
+			.player-scorecard {
+				.player-name h2 {
+					font-size: 1.55rem;
+				}
+				.buys {
+					input {
+						margin-right: 5px;
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+	}
 }
