@@ -37,6 +37,7 @@ function createPlayerElement(player, playerId) {
 		roundInput.value = player[`round${i}`] || 0; // Initialize with player's score for the round or 0
 		roundInput.dataset.playerId = playerId;
 		roundInput.dataset.roundNumber = i;
+		roundInput.setAttribute("inputmode", "numeric");
 		roundInput.addEventListener("change", function () {
 			// Update the player's score for the corresponding round
 			player[`round${i}`] = parseInt(this.value) || 0;
@@ -47,9 +48,6 @@ function createPlayerElement(player, playerId) {
 			// Update the scoreboard
 			updateLeaderboard();
 			savePlayerData(players);
-		});
-		roundInput.addEventListener("focus", function () {
-			this.setAttribute("inputmode", "numeric");
 		});
 		roundInputLabels.textContent = `Round ${i} - ${roundLabels[i - 1]}`;
 		scoreDiv.appendChild(roundInputLabels);
