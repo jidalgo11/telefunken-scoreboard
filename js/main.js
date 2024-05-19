@@ -48,6 +48,9 @@ function createPlayerElement(player, playerId) {
 			updateLeaderboard();
 			savePlayerData(players);
 		});
+		roundInput.addEventListener("focus", function () {
+			this.setAttribute("inputmode", "numeric");
+		});
 		roundInputLabels.textContent = `Round ${i} - ${roundLabels[i - 1]}`;
 		scoreDiv.appendChild(roundInputLabels);
 		scoreDiv.appendChild(roundInput);
