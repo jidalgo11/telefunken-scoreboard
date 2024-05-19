@@ -23,20 +23,23 @@ body {
 	height: inherit;
 }
 
-#resetScoreboardButton {
+#newGameButton {
 	position: fixed;
 	bottom: 5%;
-	left: 10%;
-	width: 100px;
-	height: 100px;
-	padding: 15px;
+	left: 5%;
+	width: 80px;
+	height: 80px;
+	padding: 10px;
+  line-height: 1.1rem;
+  text-transform: uppercase;
 	border-radius: 50%;
 	border: none;
 	font-size: 0.8em;
 	background-color: $secondary;
-	font-weight: 700;
+	font-weight: 500;
 	color: $white;
 	cursor: pointer;
+
 }
 
 .hidden {
@@ -291,9 +294,9 @@ input[type="checkbox"] {
 			margin-bottom: 0;
 		}
 	}
-  #navigation {
-    display: none;
-  }
+	#navigation {
+		display: none;
+	}
 	#gameMessage {
 		font-size: 2.25rem;
 		margin: 75px auto;

@@ -4,7 +4,7 @@ const d = document;
 
 const playerNameInput = d.getElementById("playerNameInput");
 const addPlayerButton = d.getElementById("addPlayerButton");
-const resetScoreboardButton = d.getElementById("resetScoreboardButton");
+const newGameButton = d.getElementById("newGameButton");
 const navigation = d.getElementById("navigation");
 const gameMessage = d.getElementById("gameMessage");
 
@@ -221,7 +221,7 @@ addPlayerButton.addEventListener("click", function () {
 		playerNameInput.value = "";
 		// Save the updated player data to localStorage
 		savePlayerData(players);
-		resetScoreboardButton.classList.remove("hidden");
+		newGameButton.classList.remove("hidden");
 		gameMessage.classList.add("hidden");
 	} else {
 		alert("Please enter a player name");
@@ -251,7 +251,7 @@ displayScoreboard(players);
 displayLeaderboard(players);
 displayNavigation(players);
 if (players.length > 0) {
-	resetScoreboardButton.classList.remove("hidden");
+	newGameButton.classList.remove("hidden");
 	gameMessage.classList.add("hidden");
 }
 
@@ -278,13 +278,13 @@ function addScoreChangeListeners() {
 	});
 }
 
-resetScoreboardButton.addEventListener("click", function () {
+newGameButton.addEventListener("click", function () {
 	const confirmation = confirm(
 		"Are you sure you want to reset the scoreboard?"
 	);
 	if (confirmation) {
 		localStorage.removeItem("players");
-		resetScoreboardButton.classList.add("hidden");
+		newGameButton.classList.add("hidden");
 		location.reload();
 	}
 });
