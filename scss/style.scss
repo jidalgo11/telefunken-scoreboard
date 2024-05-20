@@ -24,7 +24,7 @@ body {
 }
 
 #newGameButton {
-	padding: 5px 10px;
+	padding: 5px 15px;
 	color: $white;
 	border: 1px $secondary solid;
 	margin: 0;
@@ -55,7 +55,7 @@ header {
 			margin-bottom: 25px;
 			color: $primary;
 			h1 {
-				font-size: 3em;
+				font-size: 2.95em;
 				line-height: 1em;
 			}
 			span {
@@ -66,31 +66,37 @@ header {
 		}
 		.add-player-wrapper {
 			display: flex;
+			flex-direction: column;
 			justify-content: center;
-			gap: 10px;
-			input {
-				background: $lightgray;
-				padding: 5px 10px;
-				border: 1px $gray solid;
-				margin: 0;
-				width: 225px;
-				border-top-left-radius: 5px;
-				border-bottom-left-radius: 5px;
-				&:focus {
-					outline: none;
-					border: 1px rgba($primary, 0.55) solid;
-					border-right: none;
+			align-items: center;
+			gap: 15px;
+			div {
+				input {
+					background: $lightgray;
+					padding: 5px 10px;
+					border: 1px $gray solid;
+					margin: 0;
+					width: 180px;
+					border-top-left-radius: 5px;
+					border-bottom-left-radius: 5px;
+					&:focus {
+						outline: none;
+						border: 1px rgba($primary, 0.55) solid;
+						border-right: none;
+					}
 				}
-			}
-			#addPlayerButton {
-				background: $primary;
-				padding: 5px 10px;
-				color: $white;
-				border: 1px $primary solid;
-				margin: 0;
-				cursor: pointer;
-				border-top-right-radius: 5px;
-				border-bottom-right-radius: 5px;
+				#addPlayerButton {
+					background: $primary;
+					padding: 5px 10px;
+					color: $white;
+					border: 1px $primary solid;
+					margin: 0;
+					cursor: pointer;
+					border-top-right-radius: 5px;
+					border-bottom-right-radius: 5px;
+					font-size: 0.9rem;
+					margin: -4px;
+				}
 			}
 		}
 	}
@@ -291,6 +297,13 @@ input[type="checkbox"] {
 		justify-content: space-between;
 		.logo {
 			margin-bottom: 0;
+		}
+		.add-player-wrapper {
+			flex-direction: row;
+			gap: 10px;
+			div #addPlayerButton {
+				font-size: 1rem;
+			}
 		}
 	}
 	#navigation {
