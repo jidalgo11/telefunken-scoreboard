@@ -227,7 +227,6 @@ addPlayerButton.addEventListener("click", function () {
 		playerNameInput.value = "";
 		// Save the updated player data to localStorage
 		savePlayerData(players);
-		newGameButton.classList.remove("hidden");
 		gameMessage.classList.add("hidden");
 	} else {
 		alert("Please enter a player name");
@@ -257,7 +256,6 @@ displayScoreboard(players);
 displayLeaderboard(players);
 displayNavigation(players);
 if (players.length > 0) {
-	newGameButton.classList.remove("hidden");
 	gameMessage.classList.add("hidden");
 }
 
