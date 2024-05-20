@@ -24,22 +24,14 @@ body {
 }
 
 #newGameButton {
-	position: fixed;
-	bottom: 5%;
-	left: 5%;
-	width: 80px;
-	height: 80px;
-	padding: 10px;
-  line-height: 1.1rem;
-  text-transform: uppercase;
-	border-radius: 50%;
-	border: none;
-	font-size: 0.8em;
+	padding: 5px 10px;
+	color: $white;
+	border: 1px $secondary solid;
+	margin: 0;
+	cursor: pointer;
+	border-radius: 5px;
 	background-color: $secondary;
 	font-weight: 500;
-	color: $white;
-	cursor: pointer;
-
 }
 
 .hidden {
@@ -75,6 +67,7 @@ header {
 		.add-player-wrapper {
 			display: flex;
 			justify-content: center;
+			gap: 10px;
 			input {
 				background: $lightgray;
 				padding: 5px 10px;
@@ -89,7 +82,7 @@ header {
 					border-right: none;
 				}
 			}
-			button {
+			#addPlayerButton {
 				background: $primary;
 				padding: 5px 10px;
 				color: $white;
@@ -105,6 +98,11 @@ header {
 
 #navigation {
 	position: fixed;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
 	width: 100%;
 	height: inherit;
 	background-color: $secondary;
@@ -112,20 +110,21 @@ header {
 	left: 0;
 	z-index: 1;
 	color: $white;
-	padding: 0 15px;
+	padding: 7px 15px;
 	ul {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
 		gap: 25px;
 		padding: 0;
+		margin: 0;
 		li {
 			list-style-type: none;
 			a {
 				color: $white;
 				text-decoration: none;
 				font-weight: 500;
-				font-size: 1.1rem;
+				font-size: 1.025rem;
 			}
 		}
 	}

@@ -156,6 +156,7 @@ function displayScoreboard(players) {
 function displayNavigation(players) {
 	const container = d.getElementById("navigation");
 	const ulElement = d.createElement("ul");
+	const headingElement = d.createElement("h3");
 	const bodyElement = d.querySelector("body");
 	container.innerHTML = "";
 
@@ -170,6 +171,10 @@ function displayNavigation(players) {
 		liElement.appendChild(anchorElement);
 		ulElement.appendChild(liElement);
 	});
+	headingElement.textContent = "Player Navigation";
+	if (players.length > 0) {
+		container.appendChild(headingElement);
+	}
 	container.appendChild(ulElement);
 	bodyElement.style.paddingBottom = `${container.offsetHeight}px`;
 }
