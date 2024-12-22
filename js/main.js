@@ -38,9 +38,12 @@ function createPlayerElement(player, playerId) {
 		roundInput.dataset.playerId = playerId;
 		roundInput.dataset.roundNumber = i;
 		roundInput.setAttribute("inputmode", "numeric");
+		roundInput.addEventListener("focus", function () {
+			this.value = "";
+		});
 		roundInput.addEventListener("change", function () {
 			// Update the player's score for the corresponding round
-			player[`round${i}`] = parseInt(this.value) || 0;
+			player[`round${i}`] = parseInt(this.value);
 			// Recalculate the total score
 			const totalScore = calculateTotalScore(player);
 			// Update the player's score property
