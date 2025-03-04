@@ -70,7 +70,7 @@ header {
 			justify-content: center;
 			align-items: center;
 			gap: 15px;
-			div {
+			form {
 				input {
 					background: $lightgray;
 					padding: 5px 10px;
@@ -85,7 +85,7 @@ header {
 						border-right: none;
 					}
 				}
-				#addPlayerButton {
+				.add-player-button {
 					background: $primary;
 					padding: 5px 10px;
 					color: $white;
@@ -236,7 +236,7 @@ input[type="checkbox"] {
 			}
 		}
 	}
-	#scoreboard {
+	.scoreboard {
 		display: flex;
 		flex-direction: column;
 		row-gap: 15px;
@@ -335,7 +335,7 @@ input[type="checkbox"] {
 				padding: 10px 25px;
 			}
 		}
-		#scoreboard {
+		.scoreboard {
 			display: grid;
 			grid-template-columns: 50% 50%;
 			justify-content: space-between;
